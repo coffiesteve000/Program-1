@@ -86,9 +86,8 @@ class CustomerDb:
             list: List of all availabe data from database
         """
         try:
-            self.conn.execute("SELECT name, contact, service, cost, actual_date FROM customers")
+            self.conn.execute("SELECT actual_date, name, contact, service, cost FROM customers")
             self.fetchall = self.conn.fetchall()
-            # all_items = [ all_items for all_items in  self.fetchall] #if you dont know this line. Read about string comprehension
             return self.fetchall
         except Exception:
             return "Sorry could not retrieve data from database"

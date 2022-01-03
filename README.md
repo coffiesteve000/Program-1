@@ -1,10 +1,10 @@
 Log Sheet
 
 ## Description
-Program to serve as log sheet for business
-GUI is connected to a database to store all user inputs
-User inputs are customer details
-Data from database is fetched and displaed in UI
+Program to serve as log sheet for business.
+GUI is connected to a database to store all user inputs.
+User inputs are customer details.
+Data from database is fetched and displaed in UI.
 
 ## Language
 Python3 
@@ -14,12 +14,12 @@ Python3
 2. Sqite3 
 
 ## Issues
-Size/resize of the window
-Suitable colours and fonts
+1. Size/resize of the window
+2. Suitable colours and fonts
 
 Add issues here or your TODO
-Split table based on date
-Align text in "cost" column to the right
+1. Split table based on date
+2. Align text in "cost" column to the right
 
 
 

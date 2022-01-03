@@ -311,12 +311,14 @@ class Ui_MainWindow(object):
         each_value = any([self.is_input_empty_or_not(each_input) for each_input in all_inputs])
         
         if each_value:
+            self.error_message_color()
             self.label.setText("Provide all data")
             return
         else: pass
 
         response = Customerdb.insert_into_db(name, contact, service, cost, date)
         if response == "Added Successfully":
+            self.success_message_color()
             self.set_fields_empty()
             self.load_customer_details()
             self.label.setText(response)
@@ -333,7 +335,7 @@ class Ui_MainWindow(object):
     def set_fields_empty(self):
         self.nameEdit.setText("")
         self.contactEdit.setText("")
-        self.serviceEdit.setText("")
+        self.serviceEdit
         self.costEdit.setText("")
 
 
@@ -347,6 +349,13 @@ class Ui_MainWindow(object):
                 self.set_fields_empty()
             else:
                 return
+            
+    def error_message_color(self):
+        self.label.setStyleSheet("color: rgb(170, 0, 0);")
+        
+    def success_message_color(self):
+        self.label.setStyleSheet("color: rgb(0, 170, 0);")
+    
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Main"))

@@ -1,8 +1,7 @@
-from typing import Reversible as re
 from PyQt6 import QtCore, QtGui, QtWidgets
 from link import CustomerDB
 from PyQt6.QtWidgets import QMessageBox
-
+import re
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -202,11 +201,11 @@ class Ui_MainWindow(object):
         cost = self.costEdit.text().strip()
         date = self.dateEdit.text().strip()
         all_inputs = [name, contact, service, cost, date]
-        for each_value in all_inputs:
-            if each_value == "":
-                self.label.setText("Provide all data")
-                return
-            else: pass
+        each_value = any([self.is_input_empty_or_not(each_input) for each_input in all_inputs])
+        if each_value:
+            self.label.setText("Provide all data")
+            return
+        else: pass
 
         response = Customerdb.insert_into_db(name, contact, service, cost, date)
         if response == "Added Successfully":
@@ -214,7 +213,7 @@ class Ui_MainWindow(object):
             self.load_customer_details()
             self.label.setText(response)
 
-    def is_value_empty_or_not(checkEmpty):
+    def is_input_empty_or_not(self,checkEmpty):
         return re.search("^\s*$", checkEmpty)
 
     def set_fields_empty(self):

@@ -17,7 +17,7 @@ Python3
 1. Size/resize of the window
 2. Suitable colours and fonts
 
-Add issues here or your TODO
+## TODO
 1. Split table based on date
 2. Align text in "cost" column to the right
 

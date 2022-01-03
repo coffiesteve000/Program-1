@@ -168,7 +168,14 @@ class Ui_MainWindow(object):
         # click events
         self.saveButton.clicked.connect(self.insert_data)
         self.cancelButton.clicked.connect(self.cancel)
-
+        
+        #----------- Validators --------------#
+        onlyfloat = QtGui.QDoubleValidator()
+        onlyInt = QtGui.QIntValidator()
+        self.contactEdit.setValidator(onlyInt)
+        self.costEdit.setValidator(onlyfloat)
+        #----------- Validators End--------------#
+        
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 

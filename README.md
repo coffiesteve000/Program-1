@@ -14,13 +14,14 @@ Python3
 2. Sqite3 
 
 ### Issues
-1. Size/resize of the window
-2. Suitable colours and fonts
+1. Size/resize of the window -- **fixed**
+2. Suitable colours and fonts -- **fixed**
 
 ### TODO
 1. Split table based on date
 2. Align text in "cost" column to the right
 3. Compile
+4. Check and work on **menu** at the top of the app
 
 
 

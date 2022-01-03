@@ -17,7 +17,7 @@ class CustomerDB:
 			return "Unable to add data"
 	def return_all(self) -> list:
 		try:
-			self.conn.execute("SELECT actual_date, name, contact, service, cost FROM customers")
+			self.conn.execute("SELECT actual_date, name, contact, cost ,service  FROM customers")
 			self.fetchall = self.conn.fetchall()
 			return self.fetchall
 		except Exception:

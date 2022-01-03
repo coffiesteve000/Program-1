@@ -205,29 +205,6 @@ class Ui_MainWindow(object):
             if each_value == "":
                 self.label.setText("Provide all data")
                 return
-            elif all_inputs[3] :
-                try: 
-                    contact = int(all_inputs[1])
-                    # cost = int(all_inputs[3])
-                except Exception:
-                    self.label.setText("Contact must be a number")
-                    return
-                try: 
-                    # contact = int(all_inputs[1])
-                    cost = int(all_inputs[3])
-                except Exception:
-                    self.label.setText("Cost must be a number")
-                    return
-                    '''
-            elif all_inputs[3] :
-                try: 
-                    # contact = int(all_inputs[1])
-                    cost = int(all_inputs[3])
-                except Exception:
-                    print("Cost must be a number") # You can add a label to the UI to show this response message
-                    self.label.setText("Cost must be a number")
-                    return
-                    ''' 
             else: pass
 
         response = Customerdb.insert_into_db(name, contact, service, cost, date)

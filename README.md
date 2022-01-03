@@ -20,7 +20,7 @@ Python3
 ## TODO
 1. Split table based on date
 2. Align text in "cost" column to the right
-
+3. Compile
 
 
 

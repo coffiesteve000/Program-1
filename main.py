@@ -196,7 +196,6 @@ class Ui_MainWindow(object):
         all_inputs = [name, contact, service, cost, date]
         for each_value in all_inputs:
             if each_value == "":
-                print("Provide all data")# You can add a label to the UI to show this response message
                 self.label.setText("Provide all data")
                 return
             elif all_inputs[3] :
@@ -204,14 +203,12 @@ class Ui_MainWindow(object):
                     contact = int(all_inputs[1])
                     # cost = int(all_inputs[3])
                 except Exception:
-                    print("Contact must be a number") # You can add a label to the UI to show this response message
                     self.label.setText("Contact must be a number")
                     return
                 try: 
                     # contact = int(all_inputs[1])
                     cost = int(all_inputs[3])
                 except Exception:
-                    print("Cost must be a number") # You can add a label to the UI to show this response message
                     self.label.setText("Cost must be a number")
                     return
                     '''

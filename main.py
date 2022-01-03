@@ -194,6 +194,12 @@ class Ui_MainWindow(object):
         self.dateEdit.setDate(today)
 
     def insert_data(self):
+        """Add data to database
+        
+        Keyword arguments:
+        Return -- Return success or unsuccess.
+        """
+        
         Customerdb = CustomerDB()
         name = self.nameEdit.text().strip()
         contact = self.contactEdit.text().strip()
@@ -202,6 +208,7 @@ class Ui_MainWindow(object):
         date = self.dateEdit.text().strip()
         all_inputs = [name, contact, service, cost, date]
         each_value = any([self.is_input_empty_or_not(each_input) for each_input in all_inputs])
+        
         if each_value:
             self.label.setText("Provide all data")
             return
@@ -213,8 +220,14 @@ class Ui_MainWindow(object):
             self.load_customer_details()
             self.label.setText(response)
 
-    def is_input_empty_or_not(self,checkEmpty):
-        return re.search("^\s*$", checkEmpty)
+    def is_input_empty_or_not(self,each_input):
+        """Check whether the all the input the user provided are not empty
+        
+        Keyword arguments:
+        each_input -- Each values in the list inputs.
+        Return: Return a match of search. Whether the results contains empty spaces or empty.
+        """
+        return re.search("^\s*$", each_input)
 
     def set_fields_empty(self):
         self.nameEdit.setText("")

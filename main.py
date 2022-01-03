@@ -1,3 +1,4 @@
+from typing import Reversible as re
 from PyQt6 import QtCore, QtGui, QtWidgets
 from link import CustomerDB
 from PyQt6.QtWidgets import QMessageBox
@@ -213,7 +214,8 @@ class Ui_MainWindow(object):
             self.load_customer_details()
             self.label.setText(response)
 
-
+    def is_value_empty_or_not(checkEmpty):
+        return re.search("^\s*$", checkEmpty)
 
     def set_fields_empty(self):
         self.nameEdit.setText("")

@@ -1,22 +1,46 @@
-from PyQt6.QtWidgets import QTableWidgetItem
 from PyQt6 import QtCore, QtGui, QtWidgets
-from addCustomer import Ui_widget
-from __init__ import CustomerDb
+from link import CustomerDB
+from PyQt6.QtWidgets import QMessageBox
+import re
 
-class Ui_Form(object):
-
-    def setupUi(self, Form):
-        Form.setObjectName("Form")
-        Form.resize(620, 563)
-        self.tableWidget = QtWidgets.QTableWidget(Form)
-        self.tableWidget.setGeometry(QtCore.QRect(10, 10, 591, 511))
-        self.tableWidget.setFrameShape(QtWidgets.QFrame.Shape.Box)
-        self.tableWidget.setFrameShadow(QtWidgets.QFrame.Shadow.Plain)
-        self.tableWidget.setGridStyle(QtCore.Qt.PenStyle.NoPen)
-        self.tableWidget.setCornerButtonEnabled(False)
-        self.tableWidget.setRowCount(1)
-        self.tableWidget.setColumnCount(5)
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(950, 680)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
+        MainWindow.setSizePolicy(sizePolicy)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Maximum, QtWidgets.QSizePolicy.Policy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.centralwidget.sizePolicy().hasHeightForWidth())
+        self.centralwidget.setSizePolicy(sizePolicy)
+        self.centralwidget.setObjectName("centralwidget")
+        self.frame = QtWidgets.QFrame(self.centralwidget)
+        self.frame.setGeometry(QtCore.QRect(20, 20, 517, 631))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
+        self.frame.setSizePolicy(sizePolicy)
+        self.frame.setFrameShape(QtWidgets.QFrame.Shape.Box)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
+        self.frame.setLineWidth(7)
+        self.frame.setMidLineWidth(4)
+        self.frame.setObjectName("frame")
+        self.tableWidget = QtWidgets.QTableWidget(self.frame)
+        self.tableWidget.setGeometry(QtCore.QRect(0, 0, 16777215, 16777215))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
+        self.tableWidget.setSizePolicy(sizePolicy)
         self.tableWidget.setObjectName("tableWidget")
+        self.tableWidget.setColumnCount(5)
+        self.tableWidget.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -27,76 +51,234 @@ class Ui_Form(object):
         self.tableWidget.setHorizontalHeaderItem(3, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(4, item)
-        item = QtWidgets.QTableWidgetItem()
+        self.frame_2 = QtWidgets.QFrame(self.centralwidget)
+        self.frame_2.setGeometry(QtCore.QRect(589, 29, 341, 621))
+        self.frame_2.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.frame_2.setFrameShape(QtWidgets.QFrame.Shape.Box)
+        self.frame_2.setFrameShadow(QtWidgets.QFrame.Shadow.Plain)
+        self.frame_2.setLineWidth(2)
+        self.frame_2.setObjectName("frame_2")
+        self.widget_2 = QtWidgets.QWidget(self.frame_2)
+        self.widget_2.setGeometry(QtCore.QRect(10, 400, 321, 201))
+        self.widget_2.setStyleSheet("background-color: rgb(255, 85, 255);")
+        self.widget_2.setObjectName("widget_2")
+        self.label = QtWidgets.QLabel(self.widget_2)
+        self.label.setGeometry(QtCore.QRect(60, 80, 221, 31))
         font = QtGui.QFont()
+        font.setFamily("Arial")
         font.setPointSize(12)
-        item.setFont(font)
-        self.tableWidget.setItem(0, 0, item)
-        self.tableWidget.horizontalHeader().setDefaultSectionSize(113)
-        self.addButton = QtWidgets.QPushButton(Form)
-        self.addButton.setGeometry(QtCore.QRect(500, 530, 101, 24))
-        self.addButton.setStyleSheet("color: rgb(255, 255, 255);\n"
-            "background-color: rgb(0, 0, 255);\n"
-            "selection-color: rgb(15, 15, 255);")
-        self.addButton.setObjectName("addButton")
-        
-        self.refreshButton = QtWidgets.QPushButton(Form)
-        self.refreshButton.setGeometry(QtCore.QRect(300, 530, 101, 24))
-        self.refreshButton.setStyleSheet("color: rgb(255, 255, 255);\n"
-            "background-color: rgb(0, 0, 255);\n"
-            "selection-color: rgb(15, 15, 255);")
-        self.refreshButton.setObjectName("refreshButton")
-        self.refreshButton.clicked.connect(self.load_customer_details)
-        self.addButton.clicked.connect(self.call_add_customer_widget)
+        font.setItalic(True)
+        self.label.setFont(font)
+        self.label.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label.setText("")
+        self.label.setObjectName("label")
+        self.widget = QtWidgets.QWidget(self.frame_2)
+        self.widget.setGeometry(QtCore.QRect(20, 10, 311, 351))
+        self.widget.setAutoFillBackground(False)
+        self.widget.setStyleSheet("border-color: rgb(85, 0, 255);\n"
+"gridline-color: rgb(85, 255, 255);")
+        self.widget.setObjectName("widget")
+        self.saveButton = QtWidgets.QPushButton(self.widget)
+        self.saveButton.setGeometry(QtCore.QRect(40, 310, 80, 41))
+        self.saveButton.setMouseTracking(True)
+        self.saveButton.setStyleSheet("background-color: rgb(0, 85, 255);\n"
+"font: 9pt \"Arial Rounded MT Bold\";\n"
+"color: rgb(255, 255, 255);")
+        self.saveButton.setObjectName("saveButton")
+        self.cancelButton = QtWidgets.QPushButton(self.widget)
+        self.cancelButton.setGeometry(QtCore.QRect(180, 310, 80, 41))
+        self.cancelButton.setMouseTracking(True)
+        self.cancelButton.setStyleSheet("background-color: rgb(255, 21, 0);\n"
+"font: 9pt \"Arial Rounded MT Bold\";\n"
+"color: rgb(255, 255, 255);")
+        self.cancelButton.setObjectName("cancelButton")
+        self.layoutWidget = QtWidgets.QWidget(self.widget)
+        self.layoutWidget.setGeometry(QtCore.QRect(10, 10, 290, 281))
+        self.layoutWidget.setObjectName("layoutWidget")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.layoutWidget)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.nameLayout = QtWidgets.QHBoxLayout()
+        self.nameLayout.setObjectName("nameLayout")
+        self.name = QtWidgets.QLabel(self.layoutWidget)
+        self.name.setStyleSheet("font: 10pt \"Arial Rounded MT Bold\";")
+        self.name.setObjectName("name")
+        self.nameLayout.addWidget(self.name)
+        self.nameEdit = QtWidgets.QLineEdit(self.layoutWidget)
+        self.nameEdit.setObjectName("nameEdit")
+        self.nameLayout.addWidget(self.nameEdit)
+        self.verticalLayout.addLayout(self.nameLayout)
+        self.contactLayout = QtWidgets.QHBoxLayout()
+        self.contactLayout.setObjectName("contactLayout")
+        self.contact = QtWidgets.QLabel(self.layoutWidget)
+        self.contact.setStyleSheet("font: 10pt \"Arial Rounded MT Bold\";")
+        self.contact.setObjectName("contact")
+        self.contactLayout.addWidget(self.contact)
+        self.contactEdit = QtWidgets.QLineEdit(self.layoutWidget)
+        self.contactEdit.setObjectName("contactEdit")
+        self.contactLayout.addWidget(self.contactEdit)
+        self.verticalLayout.addLayout(self.contactLayout)
+        self.serviceLayout = QtWidgets.QHBoxLayout()
+        self.serviceLayout.setObjectName("serviceLayout")
+        self.service = QtWidgets.QLabel(self.layoutWidget)
+        self.service.setStyleSheet("font: 10pt \"Arial Rounded MT Bold\";")
+        self.service.setObjectName("service")
+        self.serviceLayout.addWidget(self.service)
+        self.serviceEdit = QtWidgets.QLineEdit(self.layoutWidget)
+        self.serviceEdit.setObjectName("serviceEdit")
+        self.serviceLayout.addWidget(self.serviceEdit)
+        self.verticalLayout.addLayout(self.serviceLayout)
+        self.costLayout = QtWidgets.QHBoxLayout()
+        self.costLayout.setObjectName("costLayout")
+        self.cost = QtWidgets.QLabel(self.layoutWidget)
+        self.cost.setStyleSheet("font: 10pt \"Arial Rounded MT Bold\";")
+        self.cost.setObjectName("cost")
+        self.costLayout.addWidget(self.cost)
+        self.costEdit = QtWidgets.QLineEdit(self.layoutWidget)
+        self.costEdit.setObjectName("costEdit")
+        self.costLayout.addWidget(self.costEdit)
+        self.verticalLayout.addLayout(self.costLayout)
+        self.dateLayout = QtWidgets.QHBoxLayout()
+        self.dateLayout.setObjectName("dateLayout")
+        self.date = QtWidgets.QLabel(self.layoutWidget)
+        self.date.setStyleSheet("font: 10pt \"Arial Rounded MT Bold\";")
+        self.date.setObjectName("date")
+        self.dateLayout.addWidget(self.date)
+        self.dateEdit = QtWidgets.QDateEdit(self.layoutWidget)
+        self.dateEdit.setObjectName("dateEdit")
+        self.dateEdit.setDisplayFormat("d/M/yyyy")
+        self.dateEdit.setCalendarPopup(True)
+        self.dateEdit.setCurrentSectionIndex(0)
+        self.dateLayout.addWidget(self.dateEdit)
+        self.verticalLayout.addLayout(self.dateLayout)
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 950, 22))
+        self.menubar.setObjectName("menubar")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusBar = QtWidgets.QStatusBar(MainWindow)
+        self.statusBar.setObjectName("statusBar")
+        MainWindow.setStatusBar(self.statusBar)
 
-        #start method on load
+        # start method
         self.load_customer_details()
+        self.set_date()
+        # self.tableWidget.setItem(1,5,QtWidgets.QTableWidgetItem(data))
 
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
+        # click events
+        self.saveButton.clicked.connect(self.insert_data)
+        self.cancelButton.clicked.connect(self.cancel)
+        
+        #----------- Validators --------------#
+        onlyfloat = QtGui.QDoubleValidator()
+        onlyInt = QtGui.QIntValidator()
+        self.contactEdit.setValidator(onlyInt)
+        self.costEdit.setValidator(onlyfloat)
+        #----------- Validators End--------------#
+        
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def load_customer_details(self):
-        Customerdb = CustomerDb() # instance of the class
-        customer_details = Customerdb.return_all_data() # data from database
-        self.tableWidget.setRowCount(0) # first set the row count of the tablke to zero
-        # Now loop thru the customer_details and insert into database
-        for row_number, row_Data in enumerate(customer_details):
+        CustomerDb = CustomerDB()
+        Customer_details = CustomerDb.return_all()
+        self.tableWidget.setRowCount(0)
+        for row_number,row_data in enumerate(Customer_details):
             self.tableWidget.insertRow(row_number)
-            for column_number, data in enumerate(row_Data):
-                self.tableWidget.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+            for column_number, data in enumerate(row_data):
+                self.tableWidget.setItem(row_number,column_number,QtWidgets.QTableWidgetItem(str(data)))
 
-    def call_add_customer_widget(self):
-        self.window = QtWidgets.QWidget()
-        self.ui = Ui_widget()
-        self.ui.setupUi(self.window)
-        self.window.show()
+    def set_date(self):
+        from datetime import date
+        today = date.today()
+        self.dateEdit.setDate(today)
+
+    def insert_data(self):
+        """Add data to database
+        
+        Keyword arguments:
+        Return -- Return success or unsuccess.
+        """
+        
+        Customerdb = CustomerDB()
+        name = self.nameEdit.text().strip()
+        contact = self.contactEdit.text().strip()
+        service = self.serviceEdit.text().strip()
+        cost = self.costEdit.text().strip()
+        date = self.dateEdit.text().strip()
+        all_inputs = [name, contact, service, cost, date]
+        each_value = any([self.is_input_empty_or_not(each_input) for each_input in all_inputs])
+        
+        if each_value:
+            self.label.setText("Provide all data")
+            return
+        else: pass
+
+        response = Customerdb.insert_into_db(name, contact, service, cost, date)
+        if response == "Added Successfully":
+            self.set_fields_empty()
+            self.load_customer_details()
+            self.label.setText(response)
+
+    def is_input_empty_or_not(self,each_input):
+        """Check whether the all the input the user provided are not empty
+        
+        Keyword arguments:
+        each_input -- Each values in the list inputs.
+        Return: Return a match of search. Whether the results contains empty spaces or empty.
+        """
+        return re.search("^\s*$", each_input)
+
+    def set_fields_empty(self):
+        self.nameEdit.setText("")
+        self.contactEdit.setText("")
+        self.serviceEdit.setText("")
+        self.costEdit.setText("")
 
 
-    def retranslateUi(self, Form):
+    def cancel(self):
+        if True:
+            mes = QMessageBox.question(QMessageBox(), 
+                        'Confirm', 'Are you sure you want to exit? Save all data in the input field if there is any before exit ', 
+                        QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+            if mes == QMessageBox.StandardButton.Yes:
+                # sys.exit()
+                self.set_fields_empty()
+            else:
+                return
+
+
+    def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Main"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Main"))
         item = self.tableWidget.horizontalHeaderItem(0)
-        item.setText(_translate("Form", "Date"))
+        item.setText(_translate("MainWindow", "Date"))
         item = self.tableWidget.horizontalHeaderItem(1)
-        item.setText(_translate("Form", "Name"))
+        item.setText(_translate("MainWindow", "Name"))
         item = self.tableWidget.horizontalHeaderItem(2)
-        item.setText(_translate("Form", "Contact"))
+        item.setText(_translate("MainWindow", "Contact"))
         item = self.tableWidget.horizontalHeaderItem(3)
-        item.setText(_translate("Form", "Service"))
+        item.setText(_translate("MainWindow", "Service"))
         item = self.tableWidget.horizontalHeaderItem(4)
-        item.setText(_translate("Form", "Cost"))
-        __sortingEnabled = self.tableWidget.isSortingEnabled()
-        self.tableWidget.setSortingEnabled(False)
-        self.tableWidget.setSortingEnabled(__sortingEnabled)
-        self.addButton.setText(_translate("Form", "Add Customer"))
-        self.refreshButton.setText(_translate("Form", "Refresh List"))
+        item.setText(_translate("MainWindow", "Cost"))
+        self.saveButton.setToolTip(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
+        self.saveButton.setWhatsThis(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">bd=0</span></p></body></html>"))
+        self.saveButton.setText(_translate("MainWindow", "Save"))
+        self.cancelButton.setToolTip(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
+        self.cancelButton.setWhatsThis(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">bd=0</span></p></body></html>"))
+        self.cancelButton.setText(_translate("MainWindow", "Clear"))
+        self.name.setText(_translate("MainWindow", "Name"))
+        self.contact.setText(_translate("MainWindow", "Contact"))
+        self.service.setText(_translate("MainWindow", "Service"))
+        self.cost.setText(_translate("MainWindow", "Cost"))
+        self.date.setText(_translate("MainWindow", "Date"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    Form = QtWidgets.QWidget()
-    ui = Ui_Form()
-    ui.setupUi(Form)
-    Form.show()
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
     sys.exit(app.exec())

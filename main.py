@@ -4,28 +4,25 @@ from PyQt6.QtWidgets import QMessageBox
 import re
 
 
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setWindowModality(QtCore.Qt.WindowModality.WindowModal)
         MainWindow.resize(898, 602)
-        sizePolicy = QtWidgets.QSizePolicy(
-            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(
-            MainWindow.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
         MainWindow.setAutoFillBackground(True)
         MainWindow.setDockNestingEnabled(True)
+        MainWindow.setDockOptions(QtWidgets.QMainWindow.setDockNestingEnabled |QtWidgets.QMainWindow.AllowTabbedDocks|QtWidgets.QMainWindow.AnimatedDocks|QtWidgets.QMainWindow.ForceTabbedDocks|QtWidgets.QMainWindow.GroupedDragging|QtWidgets.QMainWindow.VerticalTabs)
+        # AllowNestedDocks --> setDockNestingEnabled...  
         self.centralwidget = QtWidgets.QWidget(MainWindow)
-        sizePolicy = QtWidgets.QSizePolicy(
-            QtWidgets.QSizePolicy.Policy.Maximum, QtWidgets.QSizePolicy.Policy.Maximum)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Maximum, QtWidgets.QSizePolicy.Policy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(
-            self.centralwidget.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(self.centralwidget.sizePolicy().hasHeightForWidth())
         self.centralwidget.setSizePolicy(sizePolicy)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout_6 = QtWidgets.QGridLayout(self.centralwidget)
@@ -34,8 +31,7 @@ class Ui_MainWindow(object):
         self.dockWidget.setMaximumSize(QtCore.QSize(300, 524287))
         self.dockWidget.setAutoFillBackground(False)
         self.dockWidget.setStyleSheet("background-color: rgb(255, 255, 255);")
-        self.dockWidget.setFeatures(
-            QtWidgets.QDockWidget.DockWidgetFeature.DockWidgetMovable)
+        self.dockWidget.setFeatures(QtWidgets.QDockWidget.DockWidgetFeature.DockWidgetMovable)
         self.dockWidget.setObjectName("dockWidget")
         self.dockWidgetContents_2 = QtWidgets.QWidget()
         self.dockWidgetContents_2.setObjectName("dockWidgetContents_2")
@@ -52,17 +48,15 @@ class Ui_MainWindow(object):
         self.widget = QtWidgets.QWidget(self.frame_2)
         self.widget.setAutoFillBackground(False)
         self.widget.setStyleSheet("border-color: rgb(85, 0, 255);\n"
-                                  "gridline-color: rgb(85, 255, 255);")
+"gridline-color: rgb(85, 255, 255);")
         self.widget.setObjectName("widget")
         self.gridLayout_3 = QtWidgets.QGridLayout(self.widget)
         self.gridLayout_3.setObjectName("gridLayout_3")
         self.label_2 = QtWidgets.QLabel(self.widget)
-        sizePolicy = QtWidgets.QSizePolicy(
-            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(
-            self.label_2.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
         self.label_2.setSizePolicy(sizePolicy)
         self.label_2.setStyleSheet("color: rgb(0, 170, 255);")
         self.label_2.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
@@ -74,16 +68,16 @@ class Ui_MainWindow(object):
         self.cancelButton.setMinimumSize(QtCore.QSize(0, 30))
         self.cancelButton.setMouseTracking(True)
         self.cancelButton.setStyleSheet("background-color: rgb(255, 21, 0);\n"
-                                        "font: 9pt \"Arial Rounded MT Bold\";\n"
-                                        "color: rgb(255, 255, 255);")
+"font: 9pt \"Arial Rounded MT Bold\";\n"
+"color: rgb(255, 255, 255);")
         self.cancelButton.setObjectName("cancelButton")
         self.horizontalLayout.addWidget(self.cancelButton)
         self.saveButton = QtWidgets.QPushButton(self.widget)
         self.saveButton.setMinimumSize(QtCore.QSize(0, 30))
         self.saveButton.setMouseTracking(True)
         self.saveButton.setStyleSheet("background-color: rgb(0, 85, 255);\n"
-                                      "font: 9pt \"Arial Rounded MT Bold\";\n"
-                                      "color: rgb(255, 255, 255);")
+"font: 9pt \"Arial Rounded MT Bold\";\n"
+"color: rgb(255, 255, 255);")
         self.saveButton.setObjectName("saveButton")
         self.horizontalLayout.addWidget(self.saveButton)
         self.gridLayout_3.addLayout(self.horizontalLayout, 2, 0, 1, 1)
@@ -143,16 +137,13 @@ class Ui_MainWindow(object):
         self.date.setObjectName("date")
         self.dateLayout.addWidget(self.date)
         self.dateEdit = QtWidgets.QDateEdit(self.widget)
-        sizePolicy = QtWidgets.QSizePolicy(
-            QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(
-            self.dateEdit.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(self.dateEdit.sizePolicy().hasHeightForWidth())
         self.dateEdit.setSizePolicy(sizePolicy)
         self.dateEdit.setMinimumSize(QtCore.QSize(0, 30))
-        self.dateEdit.setCurrentSection(
-            QtWidgets.QDateTimeEdit.Section.DaySection)
+        self.dateEdit.setCurrentSection(QtWidgets.QDateTimeEdit.Section.DaySection)
         self.dateEdit.setDisplayFormat("d/M/yyyy")
         self.dateEdit.setCalendarPopup(True)
         self.dateEdit.setCurrentSectionIndex(0)
@@ -173,8 +164,9 @@ class Ui_MainWindow(object):
         font.setPointSize(12)
         font.setItalic(True)
         self.label.setFont(font)
-        # self.label.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label.setStyleSheet("color: rgb(255, 255, 255);")
         self.label.setText("")
+        self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label.setObjectName("label")
         self.gridLayout_7.addWidget(self.label, 0, 0, 1, 1)
         self.gridLayout.addWidget(self.widget_2, 1, 0, 1, 1)
@@ -196,22 +188,18 @@ class Ui_MainWindow(object):
         self.gridLayout_6.addWidget(self.label_3, 0, 0, 1, 3)
         self.dockWidget_2 = QtWidgets.QDockWidget(self.centralwidget)
         self.dockWidget_2.setAutoFillBackground(False)
-        self.dockWidget_2.setStyleSheet(
-            "background-color: rgb(255, 255, 255);")
-        self.dockWidget_2.setFeatures(
-            QtWidgets.QDockWidget.DockWidgetFeature.DockWidgetMovable)
+        self.dockWidget_2.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.dockWidget_2.setFeatures(QtWidgets.QDockWidget.DockWidgetFeature.DockWidgetMovable)
         self.dockWidget_2.setObjectName("dockWidget_2")
         self.dockWidgetContents_3 = QtWidgets.QWidget()
         self.dockWidgetContents_3.setObjectName("dockWidgetContents_3")
         self.gridLayout_5 = QtWidgets.QGridLayout(self.dockWidgetContents_3)
         self.gridLayout_5.setObjectName("gridLayout_5")
         self.tableWidget = QtWidgets.QTableWidget(self.dockWidgetContents_3)
-        sizePolicy = QtWidgets.QSizePolicy(
-            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(
-            self.tableWidget.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
         self.tableWidget.setSizePolicy(sizePolicy)
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(5)
@@ -235,13 +223,12 @@ class Ui_MainWindow(object):
         self.label_4.setStyleSheet("color: rgb(0, 170, 255);")
         self.label_4.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_4.setObjectName("label_4")
-        self.gridLayout_5.addWidget(
-            self.label_4, 0, 0, 1, 1, QtCore.Qt.AlignmentFlag.AlignTop)
+        self.gridLayout_5.addWidget(self.label_4, 0, 0, 1, 1, QtCore.Qt.AlignmentFlag.AlignTop)
         self.dockWidget_2.setWidget(self.dockWidgetContents_3)
         self.gridLayout_6.addWidget(self.dockWidget_2, 1, 0, 1, 2)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 898, 19))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 898, 22))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -252,14 +239,36 @@ class Ui_MainWindow(object):
         self.statusBar.setObjectName("statusBar")
         MainWindow.setStatusBar(self.statusBar)
         self.actionExport_Data = QtGui.QAction(MainWindow)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("ico/Export Icons - Download 39 Free Export icons here_files/export-icon(1).png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.actionExport_Data.setIcon(icon)
         self.actionExport_Data.setObjectName("actionExport_Data")
         self.actionExit_App = QtGui.QAction(MainWindow)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("ico/delete-icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.actionExit_App.setIcon(icon1)
         self.actionExit_App.setObjectName("actionExit_App")
         self.actionView_All = QtGui.QAction(MainWindow)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("ico/Document-Checklist-icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.actionView_All.setIcon(icon2)
         self.actionView_All.setObjectName("actionView_All")
+        self.actionPrint = QtGui.QAction(MainWindow)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("ico/Printer-icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.actionPrint.setIcon(icon3)
+        self.actionPrint.setObjectName("actionPrint")
+        self.actionShare = QtGui.QAction(MainWindow)
+        self.actionShare.setObjectName("actionShare")
+        self.actionOptions = QtGui.QAction(MainWindow)
+        self.actionOptions.setObjectName("actionOptions")
+        self.menuFile.addAction(self.actionPrint)
+        self.menuFile.addAction(self.actionShare)
         self.menuFile.addAction(self.actionExport_Data)
+        self.menuFile.addSeparator()
         self.menuFile.addAction(self.actionExit_App)
         self.menuView.addAction(self.actionView_All)
+        self.menuView.addAction(self.actionOptions)
         self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addAction(self.menuView.menuAction())
         # start method
@@ -277,9 +286,11 @@ class Ui_MainWindow(object):
         self.contactEdit.setValidator(onlyInt)
         self.costEdit.setValidator(onlyfloat)
         #----------- Validators End--------------#
+
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        
+
+
     def load_customer_details(self):
         CustomerDb = CustomerDB()
         Customer_details = CustomerDb.return_all()
@@ -335,7 +346,7 @@ class Ui_MainWindow(object):
     def set_fields_empty(self):
         self.nameEdit.setText("")
         self.contactEdit.setText("")
-        self.serviceEdit
+        self.serviceEdit.setPlaceholderText("Enter Service Details here")
         self.costEdit.setText("")
 
 
@@ -355,25 +366,19 @@ class Ui_MainWindow(object):
         
     def success_message_color(self):
         self.label.setStyleSheet("color: rgb(0, 170, 0);")
-    
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Main"))
-        self.label_2.setText(_translate(
-            "MainWindow", "ENTER BOOK LISTING DETAILS"))
-        self.cancelButton.setToolTip(_translate(
-            "MainWindow", "<html><head/><body><p><br/></p></body></html>"))
-        self.cancelButton.setWhatsThis(_translate(
-            "MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">bd=0</span></p></body></html>"))
+        self.label_2.setText(_translate("MainWindow", "ENTER BOOK LISTING DETAILS"))
+        self.cancelButton.setToolTip(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
+        self.cancelButton.setWhatsThis(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">bd=0</span></p></body></html>"))
         self.cancelButton.setText(_translate("MainWindow", "Cancel"))
-        self.saveButton.setToolTip(_translate(
-            "MainWindow", "<html><head/><body><p><br/></p></body></html>"))
-        self.saveButton.setWhatsThis(_translate(
-            "MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">bd=0</span></p></body></html>"))
+        self.saveButton.setToolTip(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
+        self.saveButton.setWhatsThis(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">bd=0</span></p></body></html>"))
         self.saveButton.setText(_translate("MainWindow", "Save"))
         self.service.setText(_translate("MainWindow", "Service"))
-        self.serviceEdit.setPlaceholderText(_translate(
-            "MainWindow", "Enter Service Details here"))
+        self.serviceEdit.setPlaceholderText(_translate("MainWindow", "Enter Service Details here"))
         self.cost.setText(_translate("MainWindow", "Cost     "))
         self.name.setText(_translate("MainWindow", "Name   "))
         self.contact.setText(_translate("MainWindow", "Contact"))
@@ -394,7 +399,12 @@ class Ui_MainWindow(object):
         self.menuView.setTitle(_translate("MainWindow", "View"))
         self.actionExport_Data.setText(_translate("MainWindow", "Export Data"))
         self.actionExit_App.setText(_translate("MainWindow", "Exit App"))
+        self.actionExit_App.setShortcut(_translate("MainWindow", "Ctrl+F4"))
         self.actionView_All.setText(_translate("MainWindow", "View All"))
+        self.actionPrint.setText(_translate("MainWindow", "Print"))
+        self.actionPrint.setShortcut(_translate("MainWindow", "Ctrl+P"))
+        self.actionShare.setText(_translate("MainWindow", "Share"))
+        self.actionOptions.setText(_translate("MainWindow", "Options"))
 
 
 if __name__ == "__main__":

@@ -158,18 +158,33 @@ color: rgb(255, 255, 255);</string>
                <layout class="QGridLayout" name="gridLayout_2">
                 <item row="4" column="0">
                  <layout class="QHBoxLayout" name="serviceLayout">
-                  <item alignment="Qt::AlignTop">
+                  <item>
                    <widget class="QLabel" name="service">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">font: 10pt &quot;Arial Rounded MT Bold&quot;;</string>
                     </property>
                     <property name="text">
                      <string>Service</string>
                     </property>
+                    <property name="alignment">
+                     <set>Qt::AlignHCenter|Qt::AlignTop</set>
+                    </property>
                    </widget>
                   </item>
-                  <item alignment="Qt::AlignTop">
+                  <item>
                    <widget class="QPlainTextEdit" name="serviceEdit">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
@@ -452,7 +467,7 @@ color: rgb(255, 255, 255);</string>
           </column>
          </widget>
         </item>
-        <item row="0" column="0" alignment="Qt::AlignTop">
+        <item row="0" column="0">
          <widget class="QLabel" name="label_4">
           <property name="styleSheet">
            <string notr="true">color: rgb(0, 170, 255);</string>

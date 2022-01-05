@@ -1,26 +1,24 @@
-from PyQt6 import QtCore, QtGui, QtWidgets, uic
+from PyQt6 import QtGui, QtWidgets, uic
 import sys
 from link import CustomerDB
 from PyQt6.QtWidgets import QMessageBox
 import re
-class Ui_MainWindow:
-    def __init__(self) -> None:
-        self.CustomerDb = CustomerDB() # Initialize db
-    
-    def load_customer_details(self):
-        Customer_details = self.CustomerDb.return_all()
-        self.tableWidget.setRowCount(0)
+CustomerDb = CustomerDB() # Initialize db
+class setupUi:
+    def load_customer_details():
+        Customer_details = CustomerDb.return_all()
+        MainWindow.tableWidget.setRowCount(0)
         for row_number,row_data in enumerate(Customer_details):
-            self.tableWidget.insertRow(row_number)
+            MainWindow.tableWidget.insertRow(row_number)
             for column_number, data in enumerate(row_data):
-                self.tableWidget.setItem(row_number,column_number,QtWidgets.QTableWidgetItem(str(data)))
+                MainWindow.tableWidget.setItem(row_number,column_number,QtWidgets.QTableWidgetItem(str(data)))
 
-    def set_date(self):
+    def set_date():
         from datetime import date
         today = date.today()
-        self.dateEdit.setDate(today)
+        MainWindow.dateEdit.setDate(today)
 
-    def insert_data(self):
+    def insert_data():
         """Add data to database
         
         Keyword arguments:
@@ -28,28 +26,28 @@ class Ui_MainWindow:
         """
         
         Customerdb = CustomerDB()
-        name = self.nameEdit.text().strip()
-        contact = self.contactEdit.text().strip()
-        service = self.serviceEdit.toPlainText().strip()
-        cost = self.costEdit.text().strip()
-        date = self.dateEdit.text().strip()
+        name = MainWindow.nameEdit.text().strip()
+        contact = MainWindow.contactEdit.text().strip()
+        service = MainWindow.serviceEdit.toPlainText().strip()
+        cost = MainWindow.costEdit.text().strip()
+        date = MainWindow.dateEdit.text().strip()
         all_inputs = [name, contact, service, cost, date]
-        each_value = any([self.is_input_empty_or_not(each_input) for each_input in all_inputs])
+        each_value = any([setupUi.is_input_empty_or_not(each_input) for each_input in all_inputs])
         
         if each_value:
-            self.error_message_color()
-            self.label.setText("Provide all data")
+            setupUi.error_message_color()
+            MainWindow.label.setText("Provide all data")
             return
         else: pass
 
         response = Customerdb.insert_into_db(name, contact, service, cost, date)
         if response == "Added Successfully":
-            self.success_message_color()
-            self.set_fields_empty()
-            self.load_customer_details()
-            self.label.setText(response)
+            setupUi.success_message_color()
+            setupUi.set_fields_empty()
+            setupUi.load_customer_details()
+            MainWindow.label.setText(response)
 
-    def is_input_empty_or_not(self,each_input):
+    def is_input_empty_or_not(each_input):
         """Check whether the all the input the user provided are not empty
         
         Keyword arguments:
@@ -58,40 +56,40 @@ class Ui_MainWindow:
         """
         return re.search("^\s*$", each_input)
 
-    def set_fields_empty(self):
-        self.nameEdit.setText("")
-        self.contactEdit.setText("")
-        self.serviceEdit.setPlaceholderText("Enter Service Details here")
-        self.costEdit.setText("")
+    def set_fields_empty():
+        MainWindow.nameEdit.setText("")
+        MainWindow.contactEdit.setText("")
+        MainWindow.serviceEdit.setPlaceholderText("Enter Service Details here")
+        MainWindow.costEdit.setText("")
 
 
-    def cancel(self):
+    def cancel():
         if True:
             mes = QMessageBox.question(QMessageBox(), 
                         'Confirm', 'Are you sure you want to exit? Save all data in the input field if there is any before exit ', 
                         QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
             if mes == QMessageBox.StandardButton.Yes:
                 # sys.exit()
-                self.set_fields_empty()
+                setupUi.set_fields_empty()
             else:
                 return
             
-    def error_message_color(self):
-        self.label.setStyleSheet("color: rgb(170, 0, 0);")
+    def error_message_color():
+        MainWindow.label.setStyleSheet("color: rgb(170, 0, 0);")
         
-    def success_message_color(self):
-        self.label.setStyleSheet("color: rgb(0, 170, 0);")
+    def success_message_color():
+        MainWindow.label.setStyleSheet("color: rgb(0, 170, 0);")
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
     MainWindow = uic.loadUi("Main.ui")
     # start method
-    MainWindow.load_customer_details()
-    MainWindow.set_date()
+    setupUi.load_customer_details()
+    setupUi.set_date()
     # MainWindow.tableWidget.setItem(1,5,QtWidgets.QTableWidgetItem(data))
 
     # click events
-    MainWindow.saveButton.clicked.connect(MainWindow.insert_data)
-    MainWindow.cancelButton.clicked.connect(MainWindow.cancel)
+    MainWindow.saveButton.clicked.connect(setupUi.insert_data)
+    MainWindow.cancelButton.clicked.connect(setupUi.cancel)
 
     #----------- Validators --------------#
     onlyfloat = QtGui.QDoubleValidator()

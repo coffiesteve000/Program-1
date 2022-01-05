@@ -3,7 +3,7 @@ import sys
 from link import CustomerDB
 from PyQt6.QtWidgets import QMessageBox
 import re
-CustomerDb = CustomerDB() # Initialize db
+CustomerDb = CustomerDB() # instance of db
 class setupUi:
     def load_customer_details():
         Customer_details = CustomerDb.return_all()

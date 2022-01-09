@@ -492,18 +492,18 @@ color: rgb(255, 255, 255);</string>
      <x>0</x>
      <y>0</y>
      <width>898</width>
-     <height>19</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionPrint"/>
+    <addaction name="printAction"/>
     <addaction name="actionShare"/>
-    <addaction name="actionExport_Data"/>
+    <addaction name="exportAction"/>
     <addaction name="separator"/>
-    <addaction name="actionExit_App"/>
+    <addaction name="exitAction"/>
    </widget>
    <widget class="QMenu" name="menuView">
     <property name="title">
@@ -512,11 +512,19 @@ color: rgb(255, 255, 255);</string>
     <addaction name="actionView_All"/>
     <addaction name="actionOptions"/>
    </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionHelp"/>
+    <addaction name="actionAbout"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="actionExport_Data">
+  <action name="exportAction">
    <property name="icon">
     <iconset>
      <normaloff>ico/Export Icons - Download 39 Free Export icons here_files/export-icon(1).png</normaloff>ico/Export Icons - Download 39 Free Export icons here_files/export-icon(1).png</iconset>
@@ -525,7 +533,7 @@ color: rgb(255, 255, 255);</string>
     <string>Export Data</string>
    </property>
   </action>
-  <action name="actionExit_App">
+  <action name="exitAction">
    <property name="icon">
     <iconset>
      <normaloff>ico/delete-icon.png</normaloff>ico/delete-icon.png</iconset>
@@ -546,13 +554,13 @@ color: rgb(255, 255, 255);</string>
     <string>View All</string>
    </property>
   </action>
-  <action name="actionPrint">
+  <action name="printAction">
    <property name="icon">
     <iconset>
      <normaloff>ico/Printer-icon.png</normaloff>ico/Printer-icon.png</iconset>
    </property>
    <property name="text">
-    <string>Print</string>
+    <string>Print...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+P</string>
@@ -566,6 +574,20 @@ color: rgb(255, 255, 255);</string>
   <action name="actionOptions">
    <property name="text">
     <string>Options</string>
+   </property>
+  </action>
+  <action name="actionHelp">
+   <property name="icon">
+    <iconset>
+     <normaloff>ico/question_balloon.png</normaloff>ico/question_balloon.png</iconset>
+   </property>
+   <property name="text">
+    <string>Help</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
    </property>
   </action>
  </widget>

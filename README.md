@@ -11,7 +11,8 @@ Python3
 
 ### Important Modules(Frameworks)
 1. PyQt6
-2. Sqite3 
+2. Sqite3
+3. Pandas
 
 ### Issues
 1. Size/resize of the window -- **fixed**
@@ -19,9 +20,13 @@ Python3
 
 ### TODO
 1. Split table based on date
-2. Align text in "cost" column to the right
+2. Align text in "cost" column to the right **fixed**
 3. Compile
-4. Check and work on **menu** at the top of the app
+4. Check and work on **menu** at the top of the app **fixed**
+5. Set file extension to xlsx automatically
+6. Export to pdf and csv
+6. Make the whole idea of exporting more robust
+7. Use **QERRORMESSAGE** for some errors
 
 
 

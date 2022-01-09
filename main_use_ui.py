@@ -219,7 +219,7 @@ if __name__ == '__main__':
     MainWindow.saveButton.clicked.connect(setupUi.insert_data)
     MainWindow.cancelButton.clicked.connect(setupUi.cancel)
     MainWindow.exitAction.triggered.connect(setupUi.exit_app)
-    MainWindow.printAction.triggered.connect(setupUi.print_file)
+    # MainWindow.printAction.triggered.connect(setupUi.print_file)
     # MainWindow.actionPrint_Preview.triggered.connect(setupUi.print_preview_dialog)  #attribute error
     MainWindow.exportAction.triggered.connect(setupUi.export_excel)
 

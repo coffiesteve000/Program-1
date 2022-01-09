@@ -15,8 +15,7 @@ Python3
 3. Pandas
 
 ### Issues
-1. Size/resize of the window -- **fixed**
-2. Suitable colours and fonts -- **fixed**
+
 
 ### TODO
 1. Split table based on date
